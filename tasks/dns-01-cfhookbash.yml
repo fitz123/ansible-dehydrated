@@ -1,0 +1,21 @@
+---
+- name: Install jq
+  apt:
+    name: jq
+    state: present
+
+- name: Copy hook script
+  copy:
+    dest: /etc/dehydrated/hooks.d/01cfhookbash.sh
+    src: 01cfhookbash.sh
+    owner: root
+    group: root
+    mode: "0700"
+
+- name: Copy hook config
+  template:
+    dest: /etc/dehydrated/hooks.d/config.sh
+    src: config.sh
+    owner: root
+    group: root
+    mode: "0700"
